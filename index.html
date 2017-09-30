@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<link rel="stylesheet" href="./material.min.css">
+		<script src="./material.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="icons.css">
+		<title>Eric Anderson &mdash; Weichert</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="x-icon">
+        <link rel="icon" href="favicon.ico" type="x-icon">
+    	<meta name="theme-color" content="#546E7A">
+    	<link rel="icon" sizes="192x192" href="nice-highres.png">
+		<meta name="format-detection" content="telephone=no">
+	</head>
+	
+	<body>
+		
+		<div class="loader"><img src="loadicon.png" style="position:fixed; z-index:10000; top:25%; left: calc(50% - 75px); height:150px; width:150px;"><img src="loadtext.png" style="position:fixed; z-index:10000; bottom:10%; left:calc(50% - 110px); width:220px;"></div>
+		
+		<style>
+			.card-image.mdl-card {
+			  background: url('ericanderson.jpg') center / cover;
+			  background-position: 0 0;
+			}
+			.card-image > .mdl-card__actions {
+			  min-height: 52px;
+			  padding: 16px;
+			  background: rgba(0, 0, 0, 0.2);
+			  color:white;
+			  position:absolute;
+			  bottom:0;
+			}
+			.mdl-layout__header-row {
+  				background: url('cover.jpg') no-repeat left bottom / cover;
+			}
+			.layout-transparent .mdl-layout__header,
+  				color: white;
+			}
+			.card-wide.mdl-card {
+				width: 512px;
+			}
+			.card-wide > .mdl-card__title {
+				color: #fff;
+				height: 200px;
+				background: url('WM.jpg') center / cover;
+			}
+			.loader {
+				padding-top: calc(210px - 25%);
+				position: fixed;
+				left: 0px;
+				top: 0px;
+				width: 100%;
+				height: 100%;
+				z-index: 9999;
+				background: url('loading.gif') 50% 50% no-repeat rgb(235, 235, 235);
+				background-size: 200px auto;
+			}
+			#p1.mobile > .info-section
+			{
+				width:80%;
+				top:50px;
+				margin:50px auto;
+			}
+			#p1.mobile > .info-section > .info-card
+			{
+				width:62%;
+				display:inline-block;
+				float:right;
+				margin-bottom:50px;
+			}
+			#p1.mobile > .info-section > .card-image
+			{
+				width:35%;
+				display:inline-block;
+				float:left;
+			}
+			#p1.mobile > .description-card
+			{
+				width:80%;
+				margin: 10px auto;
+				margin-bottom:50px;
+			}
+			#p1.desktop > .info-section
+			{
+				display:inline-block;
+				float:left;
+				margin-left:3%;
+				margin-right:calc(12% - 125px);
+			}
+			#p1.desktop > .info-section > .info-card
+			{
+				margin-bottom:50px;
+				width:250px;
+			}
+			#p1.desktop > .info-section > .card-image
+			{
+				margin-bottom:100px;
+				top:50px;
+				width:250px;
+				height: 250px;
+			}
+			#p1.desktop > .description-card
+			{
+				display:inline-block;
+				margin-right:3%;
+				top:50px;
+				width:70%;
+				margin-left:calc(12% - 125px);
+				float:left;
+				margin-bottom:100px;
+			}
+			#slider {
+			  display:block;
+			  margin:auto;
+			  position: relative;
+			  overflow: hidden;
+			  margin-top:25px;
+			}
+
+			#slider ul {
+			  position: relative;
+			  margin: 0;
+			  padding: 0;
+			}
+
+			#slider ul li {
+			  position: relative;
+			  display: block;
+			  float: left;
+			  margin:0;
+			  padding: 0;
+			  width: 500px;
+			  height: 300px;
+			  background: #ccc;
+			  text-align: center;
+			  line-height: 300px;
+			}
+			#slider > ul > li > img {
+				height:300px;
+				width:500px;
+			}
+		</style>
+		
+		<script>
+			function showInfo() {
+   				document.getElementById('3cant').style.display = "block";
+			}
+			
+			function hideInfo() {
+   				document.getElementById('3cant').style.display = "none";
+			}
+			
+			function formSubmit() {
+				document.getElementById('submit1').style.display = "none";
+				document.getElementById('thanks1').style.display = "block";
+			}
+			
+			function formSubmit2() {
+				document.getElementById('submit2').style.display = "none";
+				document.getElementById('thanks2').style.display = "block";
+			}
+			
+			$(window).load(function() {
+				$(".loader").fadeOut("slow");
+			})
+				
+			$(window).load(function() {
+				if ($(window).width() < 1100) {
+					$('#p1').addClass('mobile');
+					
+				}
+				else{
+					$('#p1').addClass('desktop');
+				}
+			})
+			
+			function Weichert() {
+				window.open("http://www.weichert.com/NJ/Passaic/West_Milford/");
+			}
+			function Facebook() {
+				window.open("https://www.facebook.com/Eric-Anderson-Weichert-Realtors-1190657670960502/");
+			}
+			jQuery(document).ready(function ($) {
+
+			  $('#checkbox').change(function(){
+				setInterval(function () {
+					moveRight();
+				}, 3000);
+			  });
+
+				var slideCount = $('#slider ul li').length;
+				var slideWidth = $('#slider ul li').width();
+				var slideHeight = $('#slider ul li').height();
+				var sliderUlWidth = slideCount * slideWidth;
+
+				$('#slider').css({ width: slideWidth, height: slideHeight });
+
+				$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+
+				$('#slider ul li:last-child').prependTo('#slider ul');
+
+				function moveLeft() {
+					$('#slider ul').animate({
+						left: + slideWidth
+					}, 200, function () {
+						$('#slider ul li:last-child').prependTo('#slider ul');
+						$('#slider ul').css('left', '');
+					});
+				};
+
+				function moveRight() {
+					$('#slider ul').animate({
+						left: - slideWidth
+					}, 200, function () {
+						$('#slider ul li:first-child').appendTo('#slider ul');
+						$('#slider ul').css('left', '');
+					});
+				};
+
+				$('a.control_prev').click(function () {
+					moveLeft();
+				});
+
+				$('a.control_next').click(function () {
+					moveRight();
+				});
+
+			});
+  		</script>
+		
+		<div class="mdl-layout mdl-js-layout mdl-layout--no-drawer-button mdl-layout--fixed-header" style="z-index:3;">
+		  <header class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+		         	<h3><img id="weichert-logo" src="weichert.png" style="height:30px; margin-bottom:5px;">&nbsp;&nbsp;Eric Anderson</h3>
+		        </div>
+			  
+			<div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="position:absolute; left:0px; right:0px; width:100%;">
+			  <a href="#scroll-tab-1" class="mdl-layout__tab is-active">About Me</a>
+			  <a href="#scroll-tab-3" class="mdl-layout__tab">Buying</a>
+			  <a href="#scroll-tab-4" class="mdl-layout__tab">Selling</a>
+			  <a href="#scroll-tab-5" class="mdl-layout__tab">Contact Me</a>
+			</div>
+		  </header>
+		  
+		<main class="mdl-layout__content">
+			<section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+				<div class="page-content">
+										
+					
+					<div id="p1">
+					
+										<div class="info-section">
+											<div class="card-image mdl-card mdl-shadow--2dp">
+											  <div class="mdl-card__title mdl-card--expand"></div>
+											  <div class="mdl-card__actions">
+												<span class="demo-card-image__filename">Eric Anderson</span>
+											  </div>
+											</div>
+										<div class="mdl-card info-card mdl-shadow--2dp">
+											<div class="mdl-card__title mdl-card--expand" style="color:#fff; background-color:#607D8B;">
+												<h3 class="mdl-card__title-text">Contact Me</h3>
+											  </div>
+											  <div class="mdl-card__supporting-text" style="display:inlineblock; text-align:center;">
+												1467 Union Valley Road
+												  <br>
+												West Milford, NJ 07480
+												  <br>
+												  <br>
+												Cell: 973-534-3176
+												  <br>
+												Office: 973-728-7775
+												  <br>
+												Fax: 973-728-8836
+												  <br>
+												  <br>
+											    <button class="mdl-button mdl-js-button mdl-button--accent" onclick="Facebook()" style="display:block; color:#3b5998; margin-left:auto; margin-right:auto;">
+													<img src="facebook-box.png" style="margin-left:-10px; height:24px;">&nbsp;&nbsp;Facebook
+												  </button>
+											  </div>
+											</div>
+						</div>
+
+                                            <div class="mdl-card description-card mdl-shadow--2dp card-wide">
+											  <div class="mdl-card__title">
+												<h1 class="mdl-card__title-text" style="font-size:30px;">Welcome!</h1>
+											  </div>
+											  <div class="mdl-card__supporting-text">
+												  <h5>Professional Credentials</h5>
+												  <ul>
+													<li>Licensed Realtor in New Jersey</li>
+ 													<li>Member of Garden State Multiple Listing Service</li>
+													<li>Member of National Association of Realtors</li>
+													<li>Member of New Jersey Association of Realtors</li>
+  													<li>Member of Passaic County Association of Realtors</li> 
+												  </ul>
+												  <h5>Education</h5>
+												  <ul>
+													<li>Ramapo College of New Jersey</li>
+ 													<li>Bachelors degree in Communications</li> 
+												  </ul>
+												  <h5>Personal Background</h5>
+												  <ul>
+													<li>Resident of West Milford my entire life and I appreciate the North New Jersey area and all it has to offer</li> 
+												  </ul>
+												<h5>Personal Service With a Difference</h5>
+												<p>You probably know how important it is to find the right real estate agent when you are focusing on a financial investment as substantial and as personal as your home.</p>
+
+												<p>What you should know about me is that, as a Weichert Sales Associate, I believe wholeheartedly in the unique, personal nature of real estate. You will see that revealed in how I follow through on what I promise, as I carefully guide you through the many steps and decisions along the way.</p>
+
+												<p>I am fully committed to providing you with what my company calls "The Weichert Difference" - a noticeably higher level of service that will make your real estate experience as easy and as stress-free as possible.</p>
+
+												  <p>You can expect from me:</p>
+												  <ul>
+														<li>Personal and knowledgeable service that is genuinely responsive to your needs</li>
+
+														<li>A "Neighborhood Specialist's" familiarity with local communities, home values, and price trends</li>
+														<li>Top professional skills continually refined through Weichert training programs respected industry wide</li>
+														<li>Advice and guidance throughout the entire process</li>
+														<li>Commitment to help you leverage Weichert's many resources. I can save you valuable time and effort in securing home financing, insurance, and home connections.</li>
+												  </ul>
+												<p>Feel free to contact me anytime, whether it's to get started on helping you realize your goals and dreams, or just to ask a question. I would welcome the opportunity to make a difference for you.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			  
+			<section class="mdl-layout__tab-panel" id="scroll-tab-3">
+				<div class="page-content">
+					
+					<div style="margin-bottom:50px;">
+						<div class="mdl-card mdl-card mdl-shadow--2dp" style="width:80%; margin:10px auto; top:50px; margin-bottom:100px;">
+							  <div class="mdl-card__title mdl-card--expand" style="color:#fff; background-color:#607D8B;">
+								  <h4 style="padding-bottom:30px; display:block; margin-left:auto; margin-right:auto; text-align:center;">Homes In West Milford and Beyond</h4>
+							  </div>
+							<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--raised mdl-shadow--4dp" onclick="Weichert()" style="z-index:5; display:block; margin-left:auto; margin-right:auto; margin-top:-30px;">
+								<i class="material-icons">search</i>
+							</button>
+							<div class="mdl-card__supporting-text">
+								Below, you'll find details about each of my current listings. If you're interested in one, please check the schedule for open houses, or schedule a private tour by using the "Contact Me" form linked above.
+								<br>
+								<br>
+								As a Weichert&#174; Realtor, I can show you many more houses in the West Milford Area. To take a look at some more of our offerings, please click the search button above. If you find a home that interests you, use the "Contact Me" form to schedule an appointment at the home.
+								<br>
+								<br>
+								<br>
+								I sincerely hope that I can help you to find the perfect home!
+							</div>
+						</div>
+
+						<div class="mdl-card mdl-card mdl-shadow--2dp" style="width:80%; margin:auto;">
+							  <div class="mdl-card__title">
+								  <strike>3 Canterbury Road, Ringwood NJ</strike>&nbsp;<b>Under Contract</b>
+							  </div>
+							  <div class="mdl-card__media" style="background:#f5f5f5; height:350px;">
+								  	<a href="#" class="control_next">
+										  <button class="mdl-button mdl-js-button mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored mdl-button--raised" style="position:absolute; z-index:500; display:block; right:15px; margin-top:150px;">
+											<i class="material-icons">keyboard_arrow_right</i>
+										</button>
+										</a>
+									  <a href="#" class="control_prev">
+										   <button class="mdl-button mdl-js-button mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored mdl-button--raised" style="position:absolute; z-index:500; display:block; left:15px; margin-top:150px;">
+												<i class="material-icons">keyboard_arrow_left</i>
+											</button>
+									  </a>
+								  	<div id="slider">
+									  <ul>
+										<li><img src="Houses/3cant1.jpg"></li>
+										<li><img src="Houses/3cant2.jpg"></li>
+										<li><img src="Houses/3cant3.jpg"></li>
+										<li><img src="Houses/3cant4.jpg"></li>
+										<li><img src="Houses/3cant1.jpg"></li>
+									  </ul>  
+									</div>
+								</div>
+							  <div class="mdl-card__supporting-text">
+								 This lovely cape cod home features 3 bedrooms, 2 full baths, a full kitchen with an island, and an ideal plot of land at 50x99.<br><br>
+							  </div>
+							  <div class="mdl-card__actions mdl-card--border">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="Show Info" onclick="showInfo()">
+									Details
+								 </button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			  
+			<section class="mdl-layout__tab-panel" id="scroll-tab-4">
+				<div class="page-content">
+					<div style="margin-bottom:50px;">
+						<div id="form" class="mdl-card mdl-card mdl-shadow--2dp" style="width:80%; margin:10px auto; top:50px; margin-bottom:100px;">
+							
+							<div class="mdl-card__title mdl-card--expand" style="color:#fff; background-color:#607D8B;">
+								<h4>Tell Me About Your House</h4>
+							</div>
+							
+							<iframe name="captureiframe" style="display:none;"></iframe>
+							<div class="mdl-card__supporting-text">
+								<form action="https://docs.google.com/forms/d/1p8Q-xoe4qqmooVnHbn_bIS3X2jHQ7hiUjiV4BYVj2-s/formResponse" method="POST" onsubmit="formSubmit()" target="captureiframe">
+									
+									<h5>Your Contact Information</h5>
+									
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_2005620554">Name</label>
+										<input type="text" name="entry.2005620554" class="mdl-textfield__input" id="entry_2005620554">
+									</div>
+									
+									<br>
+									
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_1045781291">Email</label>
+										<input type="text" name="entry.1045781291" class="mdl-textfield__input">
+									</div>
+									
+									<br>
+										
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_1166974658">Phone Number</label>
+										<input type="text" name="entry.1166974658" class="mdl-textfield__input">
+									</div>
+										
+									<br>
+									<br>
+									<br>
+									<br>
+									
+									<h5>Details Of the House</h5>
+									
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_1065046570">Address</label>
+										<input type="text" name="entry.1065046570" class="mdl-textfield__input">
+									</div>
+										
+									<br>
+									
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_2001125711">Number of Bedrooms</label>
+										<input type="text" name="entry.2001125711" class="mdl-textfield__input">
+									</div>
+										
+									<br>
+									
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_432148810">Number of Bathrooms</label>
+										<input type="text" name="entry.432148810" class="mdl-textfield__input">
+									</div>
+										
+									<br>
+										
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_1563413593">Number Square Feet</label>
+										<input type="text" name="entry.1563413593" class="mdl-textfield__input">
+									</div>
+										
+									<br>
+									
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_1969967544">Size of Property</label>
+										<input type="text" name="entry.1969967544" class="mdl-textfield__input">
+									</div>
+									
+									<label for="entry_28270611"><h6>Type Of Home</h6></label>
+
+									<ul>
+										
+										<li style="list-style-type:none;">
+											<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+												<input type="radio" name="entry.793395398" value="Single-Family" id="group_793395398_1" class="mdl-radio__button">
+												<span class="mdl-radio__label">Single-Family</span>
+											</label>
+										</li>
+										
+										<li style="list-style-type:none;">
+											<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+												<input type="radio" name="entry.793395398" value="Multi-Family" id="group_793395398_2" class="mdl-radio__button">
+												<span class="mdl-radio__label">Multi-Family</span>
+											</label>
+										</li>
+										
+										<li style="list-style-type:none;">
+											<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+												<input type="radio" name="entry.793395398" value="Town House" id="group_793395398_3" class="mdl-radio__button" aria-label="Town House">
+												<span class="mdl-radio__label">Town House</span>
+											</label>
+										</li>
+										
+										<li style="list-style-type:none;">
+											<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+												<input type="radio" name="entry.793395398" value="Co-Op" id="group_793395398_4" class="mdl-radio__button" aria-label="Co-Op">
+												<span class="mdl-radio__label">Co-Op</span>
+											</label>
+										</li>
+										
+									</ul>
+										
+									<label for="entry_741113984"><h6>Type Of Heating</h6></label>
+
+									<ul>
+										<li style="list-style-type:none;">
+											<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+												<input type="radio" name="entry.1992796210" value="Gas" id="group_1992796210_1" class="mdl-radio__button" aria-label="Gas">
+												<span class="mdl-radio__label">Gas</span>
+											</label>
+										</li>
+										
+										<li style="list-style-type:none;">
+											<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+												<input type="radio" name="entry.1992796210" value="Oil" id="group_1992796210_2" class="mdl-radio__button" aria-label="Oil">
+												<span class="mdl-radio__label">Oil</span>
+											</label>
+										</li>
+										
+										<li style="list-style-type:none;">
+											<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+												<input type="radio" name="entry.1992796210" value="Propane" id="group_1992796210_3" class="ss-q-radio mdl-radio__button" aria-label="Propane">
+												<span class="mdl-radio__label">Propane</span>
+											</label>
+										</li>
+									</ul>
+										
+									<label for="entry_4851895"><h6>AC</h6></label>
+
+									<ul>
+										<li style="list-style-type:none;">
+											<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+												<input type="radio" name="entry.1602810977" value="None" id="group_1602810977_1" class="ss-q-radio mdl-radio__button" aria-label="None">
+												<span class="mdl-radio__label">None</span>
+											</label>
+										</li>
+										
+										<li style="list-style-type:none;">
+											<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+												<input type="radio" name="entry.1602810977" value="Window Units" id="group_1602810977_2" class="ss-q-radio mdl-radio__button" aria-label="Window Units">
+												<span class="mdl-radio__label">Window Units</span>
+											</label>
+										</li>
+										
+										<li style="list-style-type:none;">
+											<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+												<input type="radio" name="entry.1602810977" value="Centeral" id="group_1602810977_3" class="ss-q-radio mdl-radio__button" aria-label="Centeral">
+												<span class="mdl-radio__label">Central</span>
+											</label>
+										</li>
+									</ul>
+									
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_1530846230">Additional Comments</label>
+										<textarea name="entry.1530846230" rows="3" cols="0" class="mdl-textfield__input" id="entry_1530846230"></textarea>
+
+									</div>
+									
+									<br>
+									<br>
+									
+									<input type="hidden" name="draftResponse" value="[,,&quot;-1941094573636100970&quot;]
+									">
+									<input type="hidden" name="pageHistory" value="0">
+									<input type="hidden" name="fvv" value="0">
+									<input type="hidden" name="fbzx" value="-1941094573636100970">
+
+
+								
+									<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" name="submit" value="Submit" id="submit1">Submit</button>
+									<button id="thanks1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="display:none;">Thank You! I'll be in touch soon.</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			  
+			<section class="mdl-layout__tab-panel" id="scroll-tab-5">
+				<div class="page-content">
+					<div style="margin-bottom:50px;">
+						<div id="form" class="mdl-card mdl-card mdl-shadow--2dp" style="width:80%; margin:10px auto; top:50px; margin-bottom:100px;">
+							
+							<div class="mdl-card__title mdl-card--expand" style="color:#fff; background-color:#607D8B;">
+								<h4>Contact  Me</h4>
+							</div>
+							
+							<iframe name="captureiframe" style="display:none;"></iframe>
+							<div class="mdl-card__supporting-text">
+								<form action="https://docs.google.com/forms/d/1p8Q-xoe4qqmooVnHbn_bIS3X2jHQ7hiUjiV4BYVj2-s/formResponse" method="POST" onsubmit="formSubmit2()" target="captureiframe">
+									
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_2005620554">Name</label>
+										<input type="text" name="entry.2005620554" class="mdl-textfield__input" id="entry_2005620554">
+									</div>
+									
+									<br>
+									
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_1045781291">Email</label>
+										<input type="text" name="entry.1045781291" class="mdl-textfield__input">
+									</div>
+									
+									<br>
+										
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_1166974658">Phone Number</label>
+										<input type="text" name="entry.1166974658" class="mdl-textfield__input">
+									</div>
+									
+									<br>
+
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<label class="mdl-textfield__label" for="entry_1530846230">Comments</label>
+										<textarea name="entry.1530846230" rows="3" cols="0" class="mdl-textfield__input" id="entry_1530846230"></textarea>
+
+									</div>
+									
+									<br>
+									<br>
+									
+									<input type="hidden" name="draftResponse" value="[,,&quot;-1941094573636100970&quot;]
+									">
+									<input type="hidden" name="pageHistory" value="0">
+									<input type="hidden" name="fvv" value="0">
+									<input type="hidden" name="fbzx" value="-1941094573636100970">
+
+
+								
+									<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" name="submit" value="Submit" id="submit2">Submit</button>
+									<button id="thanks2" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="display:none;">Thank You! I'll be in touch soon.</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			  
+			<footer class="mdl-mini-footer">
+					  <div class="mdl-mini-footer__left-section">
+						<div class="mdl-logo"><i class="material-icons" style="font-size:12px;">copyright</i>&nbsp;2016 Shwise Design</div>
+						<ul class="mdl-mini-footer__link-list">
+						  <li>If your home is currently listed with a real estate broker, this is not intended to be a solicitation of the listing. Each WEICHERT&#174; franchised office is independently owned and operated. Weichert&#174; is a federally registered trademark owned by Weichert Co. All other trademarks are the property of their respective owners. REALTOR&#174; is a federally registered collective membership mark which identifies a real estate professional who is a Member of the NATIONAL ASSOCIATION OF REALTORS&#174; and subscribes to its strict Code of Ethics.</li>
+						</ul>
+					  </div>
+					</footer>
+			
+		  </main>
+			
+		</div>
+				<div id="3cant" style="display:none; z-index:50; position: fixed; top: 0; left: 0; right: 0; bottom: 0;">
+					<div style="z-index:50; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.3);" onclick="hideInfo()"></div>
+					<div id="3cantinfo" style="position:absolute; top:50%;  transform:translateY(-50%); width:80%; left:10%; z-index:51;" class="details-card-wide mdl-card mdl-shadow--16dp">
+						<div class="mdl-card__title">Details</div>
+						<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+						  <div class="mdl-tabs__tab-bar">
+							  <a href="#home-panel" class="mdl-tabs__tab is-active">Home</a>
+							  <a href="#property-panel" class="mdl-tabs__tab">Property</a>
+							  <a href="#cost-panel" class="mdl-tabs__tab">Cost</a>
+							  <a href="#details-panel" class="mdl-tabs__tab">More</a>
+						  </div>
+
+						  <div class="mdl-tabs__panel is-active" id="home-panel">
+							<ul>
+								<li>3 Bedrooms</li>
+								<li>2 Full Baths</li>
+								<li>Single Family</li>
+								<li>Cape Cod</li>
+								<li>Built in 1954</li>
+							</ul>
+						  </div>
+						  <div class="mdl-tabs__panel" id="property-panel">
+							<ul>
+							  	<li>Active</li>
+								<li>Lot size of 50x99</li>
+								<li>Ringwood, NJ</li>
+								<li>Passaic County</li>
+							</ul>
+						  </div>
+						  <div class="mdl-tabs__panel" id="cost-panel">
+							<ul>
+							  	<li>$239,900</li>
+								<li>Taxes are $7,422</li>
+							</ul>
+						  </div>
+						  <div class="mdl-tabs__panel" id="details-panel">
+							<ul>
+							  	<li>MLS/Web ID is 3276287</li>
+							</ul>
+						  </div>
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							<a onclick="hideInfo()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Close</a>
+						</div>
+								  
+					</div>
+				</div>
+		
+		<iframe src="" id="captureiframe" style="display:none;"></iframe> 
+		
+	</body>
+	
+</html>
